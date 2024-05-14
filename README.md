@@ -27,4 +27,9 @@
 - **Themes**: Define your app's color schemes and styles.
 - **Translations**: Add translations for different languages.
 
+### How to generate new Hive model.g:
+1. Create a hive model inside **model->hive_model->here** with given example.
+2. Run inside terminal **flutter packages pub run build_runner build**.
+3. Wait and it will generated after the model name.
+
 # Many more will be updated ASAP!!
