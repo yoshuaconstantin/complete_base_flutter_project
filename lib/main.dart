@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:logger/logger.dart';
 
 import 'package:lottie/lottie.dart';
 
@@ -26,35 +28,51 @@ import 'helper/navigators.dart';
 import 'helper/preferences.dart';
 
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  HttpOverrides.global = CustomHttpOverrides();
+Future<void> main() async {
+  
+  runZonedGuarded(
+      () async
+      {
+        WidgetsFlutterBinding.ensureInitialized();
+        HttpOverrides.global = CustomHttpOverrides();
 
-  //Register hive adapter inside module->hive_offline_database->setting_hive.dart to make sure hive adapter already initialized
-  SettingHive.init;
+        //Register hive adapter inside module->hive_offline_database->setting_hive.dart to make sure hive adapter already initialized
+        SettingHive.init;
 
-  AppVersion().versionString();
+        AppVersion().versionString();
 
-  await EasyLocalization.ensureInitialized();
-  await Preferences.getInstance().init();
+        await EasyLocalization.ensureInitialized();
+        await Preferences.getInstance().init();
 
-  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+        final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
-  runApp(
-    EasyLocalization(
-        supportedLocales: const [
-          Locale('en'),
-          Locale('id')
-        ],
-        path: 'assets/translation',
-        fallbackLocale: const Locale('id'),
-        saveLocale: true,
-        startLocale: const Locale('id'),
-        child: MyApp(
-            savedThemeMode: savedThemeMode
-        )
-    ),
-  );
+        //Set system preferredOrientiation to portrait
+        SystemChrome.setPreferredOrientations(
+          [
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ],
+        ).then((value) => runApp(
+          EasyLocalization(
+              supportedLocales: const [
+                Locale('en'),
+                Locale('id')
+              ],
+              path: 'assets/translation',
+              fallbackLocale: const Locale('id'),
+              saveLocale: true,
+              startLocale: const Locale('id'),
+              child: MyApp(
+                  savedThemeMode: savedThemeMode
+              )
+          ),
+        ));
+      }, (error, stackTrace) async {
+        //Print out error to log.cat
+        Logger().e('$error Caused By $StackTrace');
+  });
+
+
 }
 
 class MyApp extends StatelessWidget {
