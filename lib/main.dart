@@ -4,6 +4,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:complete_base_flutter_project/bloc/home/home_bloc.dart';
 import 'package:complete_base_flutter_project/global/global_class/app_version.dart';
+import 'package:complete_base_flutter_project/module/hive_offline_database/setting_hive.dart';
 import 'package:complete_base_flutter_project/screen/home_page/home_page.dart';
 import 'package:complete_base_flutter_project/screen/splash_page/splash_page.dart';
 import 'package:complete_base_flutter_project/theme/app_colors.dart';
@@ -28,6 +29,9 @@ import 'helper/preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = CustomHttpOverrides();
+
+  //Register hive adapter inside module->hive_offline_database->setting_hive.dart to make sure hive adapter already initialized
+  SettingHive.init;
 
   AppVersion().versionString();
 

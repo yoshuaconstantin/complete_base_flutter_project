@@ -31,5 +31,6 @@
 1. Create a hive model inside **model->hive_model->here** with given example.
 2. Run inside terminal **flutter packages pub run build_runner build**.
 3. Wait and it will generated after the model name.
+4. Register the adapter inside **module->hive_offline_database->setting_hive.dart** after **hive..init...-> ;** and copy paste the code but with new **adapter**
 
 # Many more will be updated ASAP!!
