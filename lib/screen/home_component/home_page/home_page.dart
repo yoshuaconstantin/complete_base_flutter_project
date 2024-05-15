@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../home_component.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});

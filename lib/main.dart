@@ -6,7 +6,7 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:complete_base_flutter_project/bloc/home/home_bloc.dart';
 import 'package:complete_base_flutter_project/global/global_class/app_version.dart';
 import 'package:complete_base_flutter_project/module/hive_offline_database/setting_hive.dart';
-import 'package:complete_base_flutter_project/screen/home_page/home_page.dart';
+import 'package:complete_base_flutter_project/screen/home_component/home_component.dart';
 import 'package:complete_base_flutter_project/screen/splash_page/splash_page.dart';
 import 'package:complete_base_flutter_project/theme/app_colors.dart';
 import 'package:complete_base_flutter_project/theme/text_colors.dart';
@@ -26,6 +26,7 @@ import 'global/global_variable/enum_variable.dart';
 import 'helper/dimensions.dart';
 import 'helper/navigators.dart';
 import 'helper/preferences.dart';
+import 'main_bloc_provider.dart';
 
 
 Future<void> main() async {
@@ -97,15 +98,13 @@ class MyApp extends StatelessWidget {
     // );
 
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomeBloc()),
-
-      ],
+      //Move list of bloc provider into seperated file named main_bloc_provider
+      providers: ListOfBlockProvider().blocProvider,
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
         overlayWidget: Center(
           child: Lottie.asset(
-            "assets/lottie/comnfo_loading.json",
+            "assets/lottie/--overlay-name",
             frameRate: FrameRate(60),
             width: Dimensions.size100 * 2,
             repeat: true,
@@ -127,7 +126,7 @@ class MyApp extends StatelessWidget {
             initial: savedThemeMode ?? AdaptiveThemeMode.light,
             builder: (theme, darkTheme) => GetMaterialApp(
               navigatorKey: Navigators.navigatorState,
-              title: 'Community Forum',
+              title: 'Complete example flutter project',
               theme: theme,
               darkTheme: darkTheme,
               localizationsDelegates: context.localizationDelegates,
