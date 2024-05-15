@@ -27,10 +27,18 @@
 - **Themes**: Define your app's color schemes and styles.
 - **Translations**: Add translations for different languages.
 
+## How to?
+
 ### How to generate new Hive model.g:
 1. Create a hive model inside **model->hive_model->here** with given example.
 2. Run inside terminal **flutter packages pub run build_runner build**.
-3. Wait and it will generated after the model name.
+3. Wait and it will generated after the model name with **.g**.
 4. Register the adapter inside **module->hive_offline_database->setting_hive.dart** after **hive..init...-> ;** and copy paste the code but with new **adapter**
+
+### How to generate new JsonSerializable model.g:
+1. Create new model inside model->non_hive_model->here with given example.
+2. Run inside terminal **flutter packages pub run build_runner build**.
+3. Wait and it will generated after the model name with **.g**.
+4. And you are good to go
 
 # Many more will be updated ASAP!!

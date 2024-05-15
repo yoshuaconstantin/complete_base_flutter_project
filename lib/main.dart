@@ -102,16 +102,17 @@ class MyApp extends StatelessWidget {
       providers: ListOfBlockProvider().blocProvider,
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
-        overlayWidget: Center(
-          child: Lottie.asset(
-            "assets/lottie/--overlay-name",
-            frameRate: FrameRate(60),
-            width: Dimensions.size100 * 2,
-            repeat: true,
-          ),
-        ),
-        overlayColor: Colors.black87,
-        overlayOpacity: 0.8,
+        overlayWidgetBuilder: (progress) {
+          return Center(
+            child: Lottie.asset(
+              "assets/lottie/--overlay-name",
+              frameRate: const FrameRate(60),
+              width: Dimensions.size100 * 2,
+              repeat: true,
+            ),
+          );
+        },
+        overlayColor: Colors.black87.withOpacity(0.8),
         child: DismissableKeyboard(
           widget: AdaptiveTheme(
             light: ThemeData.from(
