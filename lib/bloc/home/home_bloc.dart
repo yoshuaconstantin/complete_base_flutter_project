@@ -11,5 +11,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) {
       // TODO: implement event handler
     });
+    on<onTestHomePage>(_homePageMethodTest);
+  }
+
+  FutureOr<void> _homePageMethodTest(onTestHomePage event, Emitter<HomeState> emit) async {
+    try{
+      // TODO: include example of using DIO inside API MANAGER
+    }catch (e){
+      emit(homePageFailed(message:e.toString()));
+    }finally{
+      emit(homePageFinished());
+    }
   }
 }
