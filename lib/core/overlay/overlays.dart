@@ -1,5 +1,6 @@
 
-import 'package:complete_base_flutter_project/overlay/success_overlay.dart';
+
+import 'package:complete_base_flutter_project/core/overlay/success_overlay.dart';
 import 'package:flutter/material.dart';
 import '../helper/navigators.dart';
 import 'error_overlay.dart';

@@ -1,6 +1,8 @@
-import 'package:complete_base_flutter_project/bloc/home/home_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../providers/bloc/home/home_bloc.dart';
 
 part 'home_page/home_page.dart';
 

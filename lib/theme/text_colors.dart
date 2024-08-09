@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../helper/dimensions.dart';
+import '../core/helper/dimensions.dart';
+
 
 class TextThemes {
   static const String fontFamily = "OpenSans";

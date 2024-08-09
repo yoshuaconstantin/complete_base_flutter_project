@@ -1,7 +1,9 @@
-import 'package:complete_base_flutter_project/global/global_class/app_version.dart';
+
 import 'package:flutter/material.dart';
 
-import '../../helper/dimensions.dart';
+
+import '../../core/global/global_class/app_version.dart';
+import '../../core/helper/dimensions.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/images_mode.dart';
 import '../../theme/text_colors.dart';

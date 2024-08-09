@@ -1,7 +1,10 @@
 
-import 'package:complete_base_flutter_project/helper/preferences.dart';
+
+import 'package:complete_base_flutter_project/core/helper/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+
+
 
 import '../global/global_variable/enum_variable.dart';
 import 'navigators.dart';

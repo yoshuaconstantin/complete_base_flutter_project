@@ -15,7 +15,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
         listener: (context, state) {
           // TODO: implement listener
           if(state is homePageLoading){
-            // TODO: setState with isLoading(bool) is true to tell screen now is loading time
+            // TODO: setState with isLoading(bool) is true to tell screens now is loading time
           }
           if(state is homePageFailed){
             // TODO: send a message using event.message using any notification or snackbar
@@ -24,7 +24,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             // TODO: Make any changes from data being process inside home_bloc -> _homePageMethodTest
           }
           if(state is homePageFinished){
-            // TODO: setState with isLoading(bool) is false to tell screen now loading is done
+            // TODO: setState with isLoading(bool) is false to tell screens now loading is done
 
           }
         },

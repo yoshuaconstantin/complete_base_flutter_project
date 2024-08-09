@@ -3,11 +3,8 @@ import 'dart:io';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
-import 'package:complete_base_flutter_project/bloc/home/home_bloc.dart';
-import 'package:complete_base_flutter_project/global/global_class/app_version.dart';
-import 'package:complete_base_flutter_project/module/hive_offline_database/setting_hive.dart';
-import 'package:complete_base_flutter_project/screen/home_component/home_component.dart';
-import 'package:complete_base_flutter_project/screen/splash_page/splash_page.dart';
+import 'package:complete_base_flutter_project/screens/home_component/home_component.dart';
+import 'package:complete_base_flutter_project/screens/splash_page/splash_page.dart';
 import 'package:complete_base_flutter_project/theme/app_colors.dart';
 import 'package:complete_base_flutter_project/theme/text_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,15 +14,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:logger/logger.dart';
-
 import 'package:lottie/lottie.dart';
-
-
-import 'api/custom_http_overrides.dart';
-import 'global/global_variable/enum_variable.dart';
-import 'helper/dimensions.dart';
-import 'helper/navigators.dart';
-import 'helper/preferences.dart';
+import 'core/api/custom_http_overrides.dart';
+import 'core/global/global_class/app_version.dart';
+import 'core/global/global_variable/enum_variable.dart';
+import 'core/helper/dimensions.dart';
+import 'core/helper/navigators.dart';
+import 'core/helper/preferences.dart';
+import 'domain/services/hive_offline_database/setting_hive.dart';
 import 'main_bloc_provider.dart';
 
 
@@ -37,7 +33,7 @@ Future<void> main() async {
         WidgetsFlutterBinding.ensureInitialized();
         HttpOverrides.global = CustomHttpOverrides();
 
-        //Register hive adapter inside module->hive_offline_database->setting_hive.dart to make sure hive adapter already initialized
+        //Register hive adapter inside time_services->hive_offline_database->setting_hive.dart to make sure hive adapter already initialized
         SettingHive.init;
 
         AppVersion().versionString();
@@ -82,7 +78,7 @@ class MyApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
 
 
-  // This widget is the root of your application.
+  // This widgets is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -160,7 +156,7 @@ Widget home(){
   if(Preferences.getInstance().contain(SharedPreferenceKey.SESSION_ID) && userActive) {
     return const HomePageScreen();
   } else {
-    return const HomePageScreen(); //Change this to login screen
+    return const HomePageScreen(); //Change this to login screens
   }
 }
 
